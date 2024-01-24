@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class Main {
 
@@ -58,7 +59,7 @@ public class Main {
     public static int[] notFibbonacci(int num){
 
         int[] res = new int[num];
-        String ans = "";
+//        String ans = "";
         res[0] = 0;
         res[1] = 1;
 
@@ -66,18 +67,18 @@ public class Main {
             res[i] = (3 * res[i - 1]) + (2 * res[i-2]); //given formula
         }
 
-        for(int n: res){
-            ans += n + ", ";
-        }
+//        for(int n: res){
+//            ans += n + ", ";
+//        }
 
-//        System.out.println(ans);
+        System.out.println("Non Fib Sequence:" + Arrays.toString(res));
         return res;
 
     }
 
     //Question 4
     public static int whereInSequence(int num){
-        int[] sequence = notFibbonacci(20);
+        int[] sequence = notFibbonacci(10);
         for(int i = 0; i < sequence.length; i++){
             if(sequence[i] == num){
                 return i; //returns the index of target
@@ -112,11 +113,25 @@ public class Main {
         //Tests
         String t1 = "gears of war";
         String t2 = "History of warriors";
-        System.out.println(commonSubstring(t1, t2));
-        System.out.println(notFibbonacci(10));
-        System.out.println(whereInSequence(8));
+        System.out.println("Question 1");
+        System.out.println("Input: " + "T1 = gears of war, T2 = History of warriors");
+        System.out.println("Output: " + commonSubstring(t1, t2));
+        System.out.println();
+
+        System.out.println("Question 3");
+        System.out.println("Input: 8");
+        System.out.println("Output: " + notFibbonacci(8));
+        System.out.println();
+
+        System.out.println("Question 4");
+        System.out.println("Input: 9");
+        System.out.println("Output (zero-indexed): " + whereInSequence(9));
+        System.out.println();
+
+        System.out.println("Question 5");
         int [] nums = {2,4,5,2,2,3};
-        System.out.println(removeElement(nums, 2));
+        System.out.println("Input: " + "Nums: {2,4,5,2,2,3}" + " Val: 2");
+        System.out.println("Output: " + removeElement(nums, 2));
 
     }
 }
