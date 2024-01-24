@@ -3,17 +3,34 @@ import java.math.BigInteger;
 public class Main {
 
     //Question 1
-    public static int commonSubsequence(String text1, String text2){
+    public int CommonSubsequence(String t1, String t2) {
 
+        //size of array is the length of program
+        int[][] dp = new int[t1.length() + 1][t2.length() + 1];
 
-        return -1;
+        //looks from the end to the front
+        for (int i = t1.length() - 1; i >= 0; i--) {
+            for (int j = t2.length() - 1; j >= 0; j--) {
+                if (t1.charAt(i) == t2.charAt(j)) {
+                    //finds the diagonal of the grid (next letter)
+                    //add a one to show current length of subsequence
+                    dp[i][j] = 1 + dp[i + 1][j + 1];
+                } else {
+                    //characters aren't equal so find the max len of the value above or below
+                    dp[i][j] = Math.max(dp[i][j + 1], dp[i + 1][j]);
+                }
+            }
+        }
+
+        //return the length of the longest common subseq.
+        return dp[0][0];
     }
 
 
     //Question 2
     public static String commonSubstring(String s1, String s2) {
         String result = "";
-        int maxLength = 0; // length of longest substring
+        int maxLength = 0; // length of the longest substring
         int endPosition = 0; //where substring ends
         for(int i =0; i < s1.length(); i++){
             for(int j =0; j < s2.length(); j ++){
@@ -46,7 +63,7 @@ public class Main {
         res[1] = 1;
 
         for(int i = 2; i < num; i++){
-            res[i] = (3 * res[i - 1]) + (2 * res[i-2]);
+            res[i] = (3 * res[i - 1]) + (2 * res[i-2]); //given formula
         }
 
         for(int n: res){
@@ -63,7 +80,7 @@ public class Main {
         int[] sequence = notFibbonacci(20);
         for(int i = 0; i < sequence.length; i++){
             if(sequence[i] == num){
-                return i; // 1-indexed positions
+                return i; //returns the index of target
             } else if (sequence[i] > num){ //if target num is smaller than current position place it at the current position
                 return i;
             }
@@ -79,7 +96,7 @@ public class Main {
         for(int i = 0; i < nums.length; i++){
             if(nums[i] != val){
                 nums[k] = nums[i]; // sets the num that isn't the val to the beginning
-                k++;
+                k++; //increase counter val
             }
         }
         return k;
