@@ -56,12 +56,12 @@ public class Main {
     }
 
     //Question 3
-    public static int[] notFibbonacci(int num){
+    public static Long[] notFibbonacci(int num){
 
-        int[] res = new int[num];
+        Long[] res = new Long[num];
 //        String ans = "";
-        res[0] = 0;
-        res[1] = 1;
+        res[0] = 0L;
+        res[1] = 1L;
 
         for(int i = 2; i < num; i++){
             res[i] = (3 * res[i - 1]) + (2 * res[i-2]); //given formula
@@ -71,14 +71,14 @@ public class Main {
 //            ans += n + ", ";
 //        }
 
-        System.out.println("Non Fib Sequence:" + Arrays.toString(res));
+//        System.out.println("Non Fib Sequence:" + Arrays.toString(res));
         return res;
 
     }
 
     //Question 4
     public static int whereInSequence(int num){
-        int[] sequence = notFibbonacci(10);
+        Long[] sequence = notFibbonacci(num);
         for(int i = 0; i < sequence.length; i++){
             if(sequence[i] == num){
                 return i; //returns the index of target
@@ -120,7 +120,7 @@ public class Main {
 
         System.out.println("Question 3");
         System.out.println("Input: 8");
-        System.out.println("Output: " + notFibbonacci(8));
+        System.out.println("Output: " + Arrays.toString(notFibbonacci(8)));
         System.out.println();
 
         System.out.println("Question 4");
