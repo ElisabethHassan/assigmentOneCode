@@ -12,11 +12,6 @@ public class QuestionThree {
             res[i] = (3 * res[i - 1]) + (2 * res[i-2]); //given formula
         }
 
-//        for(int n: res){
-//            ans += n + ", ";
-//        }
-
-//        System.out.println("Non Fib Sequence:" + Arrays.toString(res));
         return res;
 
     }
